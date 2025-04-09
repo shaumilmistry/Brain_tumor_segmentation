@@ -1,0 +1,88 @@
+{% extends 'index.html' %}
+
+{% block title %}Upload Image{% endblock title %}
+
+{% block body %}
+<style>
+    .custom-form label {
+        font-weight: 500;
+        margin-bottom: 5px;
+    }
+
+    .custom-form input,
+    .custom-form textarea,
+    .custom-form select {
+        width: 100%;
+        padding: 10px 12px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        font-size: 16px;
+    }
+
+    .custom-form .form-group {
+        margin-bottom: 20px;
+    }
+
+    .custom-form .address-input {
+        width: 100%;
+    }
+
+    .custom-card {
+        max-width: 700px;
+        margin: auto;
+        padding: 40px;
+        border-radius: 16px;
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.08);
+        background-color: #fff;
+    }
+
+    .submit-btn {
+        padding: 10px 30px;
+        font-size: 16px;
+        border-radius: 10px;
+    }
+</style>
+
+<div class="container mt-5">
+    <div class="custom-card">
+        <h2 class="mb-4 text-center">Upload Brain MRI Image</h2>
+        <form method="POST" enctype="multipart/form-data" class="custom-form">
+            {% csrf_token %}
+
+            <div class="form-group">
+                <label for="{{ form.first_name.id_for_label }}">First Name</label>
+                {{ form.first_name }}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.last_name.id_for_label }}">Last Name</label>
+                {{ form.last_name }}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.address.id_for_label }}">Address</label>
+                {{ form.address }}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.city.id_for_label }}">City</label>
+                {{ form.city }}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.zip_code.id_for_label }}">Zip Code</label>
+                {{ form.zip_code }}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.image.id_for_label }}">Upload MRI Image</label>
+                {{ form.image }}
+            </div>
+
+            <div class="text-center mt-4">
+                <button type="submit" class="btn btn-primary submit-btn">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock body %}
